@@ -1,31 +1,36 @@
 package myapp.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    int id;
+    private int id;
 
     @NotEmpty(message = "Enter name")
     @Size(min = 2, max = 20, message = "Min and Max length between 2 and 20")
     @Column
-    String firstName;
+    private String firstName;
     @NotEmpty(message = "Enter Family name")
     @Size(min = 2, max = 20, message = "Min and Max length between 2 and 20")
     @Column
-    String lastName;
+    private String lastName;
 
     @Min(value = 0, message = "Age can't be lower than 0")
     @Max(value = 100, message = "Please, enter your real age")
-    int age;
+    private int age;
 
     public User() {
     }
